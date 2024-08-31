@@ -5,8 +5,8 @@ const config = require('../config')
 
 const console = new transports.Console()
 const file = new transports.File({
-	filename: config.logFilePath,
-	level: 'error',
+	filename: config.logFileName,
+	level: config.logLevel,
 })
 
 const customFormat = printf(({ level, label, message, timestamp, stack }) => {
@@ -22,7 +22,7 @@ const logger = createLogger({
 		format.errors({ stack: true }),
 		config.env !== 'production' ? customFormat : json(),
 	),
-	transports: [config.env !== 'production' ? console : file],
+	transports: config.env !== 'production' ? [console, file] : [file],
 })
 
 module.exports = logger

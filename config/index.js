@@ -8,7 +8,9 @@ if (process.env.NODE_ENV != 'production') {
 module.exports = {
 	env: process.env.NODE_ENV,
 	port: process.env.PORT,
-	logFilePath: process.env.LOG_FILE_PATH,
+	logLevel: process.env.LOG_LEVEL || 'error',
+	logFilePath: process.env.LOG_FILE_PATH || "../log/",
+	logFileName: process.env.LOG_FILE_NAME || 'filelog-error.log',
 	notion: {
 		apiKey: process.env.NOTION_API_KEY,
 		databaseId: process.env.NOTION_DATABASE_ID

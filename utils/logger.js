@@ -22,7 +22,7 @@ const logger = createLogger({
 		format.errors({ stack: true }),
 		config.env !== 'production' ? customFormat : json(),
 	),
-	transports: config.env !== 'production' ? [console, file] : [file],
+	transports: config.env !== 'production' ? [console, file] : [console],
 })
 
 module.exports = logger

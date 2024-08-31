@@ -82,12 +82,11 @@ function parseDataUsageMessage(message) {
 	for (const pattern of dataUsagePatterns) {
 		const match = message.match(pattern);
 		if (match) {
-			dataUsage = match[1];
+			dataUsage = parseFloat(match[1]);
 
-			if (message.includes('GB')) {
-				dataUsage = parseFloat(dataUsage) * 1024;
-			} else {
-				dataUsage = parseFloat(dataUsage);
+			// Check the unit in the matched pattern
+			if (pattern.toString().includes("GB")) {
+				dataUsage *= 1024; // Convert GB to MB
 			}
 			break;
 		}

@@ -56,7 +56,8 @@ module.exports = {
 
 			res.ok(200, response)
 		} catch (error) {
-			return res.fail(new ErrorResponse(500, 'Failed to log data', 500));
+			const errorMessage = error.message;
+			return res.fail(new ErrorResponse(500, errorMessage || 'Failed to log data', 500));
 		}
 	}),
 }

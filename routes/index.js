@@ -3,6 +3,7 @@
  */
 
 module.exports = {
+	healthCheckRouter: require('./healthCheck'),
 	dataCaptureRouter: require('./dataCapture'),
 	unhandledRouter: require('./unhandled'),
 }

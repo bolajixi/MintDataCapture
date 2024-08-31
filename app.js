@@ -12,6 +12,7 @@ const logger = require('./utils/logger');
 const config = require('./config');
 
 const {
+    healthCheckRouter,
     dataCaptureRouter,
     unhandledRouter,
 } = require('./routes')
@@ -33,6 +34,7 @@ app.use((req, res, next) => {
     next()
 })
 
+app.use('/', healthCheckRouter)
 app.use('/api/v1/log', dataCaptureRouter)
 app.use('*', unhandledRouter)
 
